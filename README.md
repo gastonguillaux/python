@@ -1,0 +1,4 @@
+python
+======
+
+LIST OF SOME PYTHON BASIC FUNCTIONS
