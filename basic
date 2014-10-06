@@ -1,0 +1,20 @@
+# AREA DO TRIANGULO
+def areaTriangulo(base, altura):
+    area = ((1.0/2)*base*altura)
+    return area
+
+# AREA DO QUADRADO
+def areaQuadrado(base, altura):
+    area = base*altura
+    return area
+
+# KELVIN -> CELSIUS
+def grausK(celsius):
+    kelvin = celsius + 273.15
+    return kelvin
+
+
+
+print areaTriangulo(3,4)
+print areaQuadrado(3.0,4)
+print grausK(30)
