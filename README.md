@@ -1,4 +1,4 @@
-python
+Python
 ======
 
-LIST OF SOME PYTHON BASIC FUNCTIONS
+Repository of some written python code.
