@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+"""
+***SOURCES***
+SEARCHES FOR PETROBRAS
+Folha: http://search.folha.uol.com.br/?q=petrobras
+Estadao: http://busca.estadao.com.br/?q=petrobras
+O Globo: http://oglobo.globo.com/busca/?q=petrobras
+G1: http://g1.globo.com/busca?q=petrobras
+Bloomberg: http://www.bloomberg.com/search?query=petrobras
+
+"""
+
+import requests
+import bs4
+
+folha = "http://search.folha.uol.com.br/?q=petrobras"
+estado = "http://busca.estadao.com.br/?q=petrobras"
+oglobo = "http://oglobo.globo.com/busca/?q=petrobras"
+g1 = "http://g1.globo.com/busca?q=petrobras"
+trans = "http://www.portaltransparencia.gov.br/PortalComprasDiretasFavorecido.asp?TipoPesquisa=2&Ano=2016&Pagina="
+path = "C:/Users/GastónMauricio/Pictures/Camera Roll/teste.txt"
+def main():
+
+    l = []
+    for x in range(1000):
+        pagina = requests.get(trans + str(x))
+        pagina.raise_for_status()
+        sfolha = bs4.BeautifulSoup(pagina.text)
+        
+        for tag in sfolha.find_all('tr'):
+            aux = tag.get_text().split('\n')        
+            aux2 = []
+            for s in aux:
+                s = s.strip()
+                if len(s) >= 5:
+                    aux2.append(s)
+            if len(aux2) == 3: l.append(aux2)
+                
+    text = []
+    for linha in l:
+        text.append(";".join(linha) + '\n')
+    f = open(path, 'w')
+    for t in text:
+        f.write(t)
+    f.close()
+    
+    
+def main2():
+    import webbrowser
+    webbrowser.open(folha)
+
+
+if __name__ == "__main__":
+    main()
